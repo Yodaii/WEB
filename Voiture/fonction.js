@@ -20,8 +20,17 @@ $(document).ready(function() {
 		}
 	});
 	
-	$valeur = 25 + Math.floor(Math.random() * 15) * 50;
-	$("#jeu").append('<img id="voiture" class="car" src="blue-car.png" />');
-	$("#voiture").css("left", $valeur);
-	$("#voiture").animate({height:"650px"});
+	
+	$horloge = window.setInterval('voitureBleue();' , 300);
+	
 });
+
+function voitureBleue(){
+	$valeur = 25 + Math.floor(Math.random() * 15) * 50;
+	$("#jeu").prepend('<img id="voiture" class="car" src="blue-car.png" />');
+	
+	$voiture = $("#voiture");
+	$voiture.css("left", $valeur);
+	$voiture.animate({top:"650px"});
+	$voiture.remove();
+}
