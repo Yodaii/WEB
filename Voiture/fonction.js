@@ -2,7 +2,7 @@ $(document).ready(function() {
 	$joueur = $("#player");
 	
 	$joueur.css("left", "375px");
-	$joueur.css("top", "650px");
+	$joueur.css("top", "580px");
 	
 	$(document).keyup( function(event) { 
 		$keyCode = event.which;
@@ -27,10 +27,17 @@ $(document).ready(function() {
 
 function voitureBleue(){
 	$valeur = 25 + Math.floor(Math.random() * 15) * 50;
-	$("#jeu").prepend('<img id="voiture" class="car" src="blue-car.png" />');
+	$("#jeu").prepend('<p><img id="voiture" class="car" src="blue-car.png" /></p>');
 	
 	$voiture = $("#voiture");
 	$voiture.css("left", $valeur);
-	$voiture.animate({top:"650px"});
-	$voiture.remove();
+	$voiture.animate({top:"700px"}, 3000, 
+	/*{progress: function(now, fx){
+		if(($voiture.position().left == $joueur.position().left) && ($voiture.position().top == $joueur.position().top)){
+			alert("Game Over");
+		}
+	}},*/
+	function(){	
+		$("p:last").remove()
+	});
 }
